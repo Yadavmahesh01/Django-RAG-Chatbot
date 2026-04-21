@@ -15,3 +15,6 @@ AI Engine: LangChain, PyPDF2
 Vector Database: FAISS, Sentence-Transformers (all-MiniLM)
 LLM Provider: Groq (LLaMA-3.1-8b)
 This repository represents the modern standard for full-stack AI engineering, proving that deploying intelligent LLMs requires robust backend architecture, not just simple API calls.
+
+**new branch** 
+#this is for the pr understandingS
