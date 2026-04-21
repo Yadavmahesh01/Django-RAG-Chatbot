@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if messages %}
+        <ul style="color: green; font-weight: bold;">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <h2>Upload Financial PDF</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload & Process</button>
+    </form>
+
+    <hr>
+    <h3>My Indexed Documents</h3>
+    <ul>
+        {% for doc in documents %}
+            <li>{{ doc.file.name }} - <span style="color: {% if doc.is_indexed %}green{% else %}red{% endif %};">
+                [{% if doc.is_indexed %}Indexed for AI{% else %}Not Indexed{% endif %}]
+            </span></li>
+        {% empty %}
+            <li>No documents uploaded yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

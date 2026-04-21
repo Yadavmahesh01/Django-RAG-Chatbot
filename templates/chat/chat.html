@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Financial AI Chat</h2>
+    
+    <div style="border: 1px solid #ccc; padding: 15px; height: 400px; overflow-y: scroll; background: #f9f9f9; margin-bottom: 20px;">
+        
+        {% for chat in chat_history %}
+            <div style="margin-bottom: 15px;">
+                <div style="color: blue;"><strong>You:</strong> {{ chat.question }}</div>
+                <div style="color: green; margin-top: 5px;"><strong>AI:</strong> {{ chat.answer }}</div>
+                <div style="font-size: 0.8em; color: gray;">{{ chat.timestamp|date:"h:i A" }}</div>
+            </div>
+            <hr style="border-top: 1px dashed #ddd;">
+        {% empty %}
+            <p style="color: gray;"><em>No chat history yet. Upload a document and ask a question!</em></p>
+        {% endfor %}
+        
+    </div>
+
+    <!-- The Chat Input Box -->
+    <form method="post" style="display: flex; gap: 10px;">
+        {% csrf_token %}
+        <input type="text" name="question" placeholder="Ask about your financial documents..." required style="flex-grow: 1; padding: 10px;">
+        <button type="submit" style="padding: 10px 20px;">Send</button>
+    </form>
+{% endblock %}
