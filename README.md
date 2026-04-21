@@ -18,3 +18,6 @@ This repository represents the modern standard for full-stack AI engineering, pr
 
 **new branch** 
 #this is for the pr understandingS
+
+
+new text.
